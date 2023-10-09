@@ -8,6 +8,6 @@ COPY . .
 # Install requirements
 RUN pip install --no-cache-dir -r requirements.txt
 
-
-# Generate reports
-CMD ["python", "reconcillation_tl.py"]
+# Generate db for 1000 users and 1000000 transactions and generate reports
+RUN chmod +x /app/scripts.sh
+ENTRYPOINT [ "/app/scripts.sh" ]

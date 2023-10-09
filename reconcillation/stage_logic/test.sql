@@ -1,1 +1,0 @@
-select * from {tpa_table_id}
