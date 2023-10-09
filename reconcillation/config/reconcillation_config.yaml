@@ -1,0 +1,87 @@
+# Database connection parameters
+database_name: generated_txns
+
+# Default parameters for all reports
+
+start_date: 2022-01-01
+end_date: 2022-08-31
+
+
+# Parameters that are used to parse sql query from stage_logic
+sql_params: {
+            users_table_id: users,
+            transactions_table_id: transactions,
+            tpa_table_id: tpa_recon,
+            tpb_table_id: tpb_recon
+            }
+
+# List of reports to be generated and parameters to override default params if any
+# Each entity accepts these values:
+# name: name of the report, REQUIRED
+# description: description of the report OPTIONAL
+# source_table_id: used in SELECT .. FROM {source_table_id}, OPTIONAL, default ""
+# sql_logic: transformation logic, select from `reconcillation/stage_logic`, REQUIRED
+# start_date: date range filtering, OPTIONAL, default to report parameters
+# end_date: date range filtering, OPTIONAL, default to report parameters
+# filter: extra filter used in WHERE {filter} ..., OPTIONA:, default ""
+
+entity:
+
+- name: prodA_successful_txns
+  description: successful prodA transactions
+  source_table_id: tpa_recon
+  sql_logic: tp_successful_txns
+
+
+- name: not_in_prodA_txns
+  description: transactions not present in tpa_recon but present in FFI's DB
+  source_table_id: tpa_recon
+  sql_logic: not_in_tp_txns
+  start_date: 2022-01-01
+  end_date: 2022-08-01
+  filter: product = 'ProdA'
+
+- name: not_in_ffi_in_prodA
+  description: transactions in tpa_recon but not in FFI'db
+  source_table_id: tpa_recon
+  sql_logic: not_in_ffi
+
+- name: prodA_diff_txns
+  description: transactions present in both FFI and tpa_recon but with different amount
+  sql_logic: diff_txns
+  source_table_id: tpa_recon
+
+
+- name: prodB_successful_txns
+  description: successful prodB transactions
+  source_table_id: tpb_recon
+  sql_logic: tp_successful_txns
+
+
+- name: not_in_prodB_txns
+  description: transactions not present in tpb_recon but present in FFI's DB
+  source_table_id: tpb_recon
+  sql_logic: not_in_tp_txns
+  start_date: 2022-01-01
+  end_date: 2022-08-01
+  filter: product = 'ProdB'
+
+- name: not_in_ffi_in_prodB
+  description: transactions in tpb_recon but not in FFI'db
+  source_table_id: tpb_recon
+  sql_logic: not_in_ffi
+
+- name: prodB_diff_txns
+  description: transactions present in both FFI and tpb_recon but with different amount
+  sql_logic: diff_txns
+  source_table_id: tpb_recon
+
+- name: mangement_summary
+  description: daily gross transaction value for the most recent 30 days summary
+  sql_logic: management_summary
+
+- name: dashboard
+  sql_logic: dashboard
+
+
+
