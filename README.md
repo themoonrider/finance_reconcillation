@@ -1,11 +1,11 @@
-# Reconcillation reports with YAML config \
-1. Users define report parameters in the config file\
+# Reconcillation reports with YAML config 
+1. Users define report parameters in the config file
 2. Provide MODULE_NAME as the directory name that holds stage_logic and config file 
-(`reconcillation`) and FILENAME of the config file in the main script `reconcillation_tl.py`\
-3. Run the main script `python reconcillation_tl.py`\
-4. Reports will be generated in MODULE_NAME/reports directory\
+(`reconcillation`) and FILENAME of the config file in the main script `reconcillation_tl.py`
+3. Run the main script `python reconcillation_tl.py`
+4. Reports will be generated in MODULE_NAME/reports directory
 
-# Build and run in Docker container\
+# Build and run in Docker container
 
 1. Clone the repo
 `git clone https://github.com/themoonrider/finance_reconcillation.git`

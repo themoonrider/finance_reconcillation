@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN python generate_db.py 100 10000
 
 # Generated reports
-CMD ["python", "reconcillation_tl.py"]
+CMD ["python", "reconcillation/reconcillation_tl.py"]
