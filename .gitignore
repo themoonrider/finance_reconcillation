@@ -1,6 +1,5 @@
 README.pdf
 Phuong_*
-.dockerignore
 __pycache__/
 reconcillation/reports/*
 generated_txns.db

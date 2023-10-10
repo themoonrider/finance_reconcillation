@@ -8,7 +8,7 @@
 # Build and run in Docker container\
 
 1. Clone the repo
-git clone 
+`git clone https://github.com/themoonrider/finance_reconcillation.git`
 
 2. Build docker image
 `docker build --no-cache -t reconcillation:v1 .`
@@ -17,5 +17,5 @@ git clone
 `docker run reconcillation:v1`
 
 4. Once finished, export all reports to host to view
-`docker cp container_id:/app/reconcillation/reports ./reconcillation/reports`
+`docker cp {container_id}:/app/reconcillation/reports ./reconcillation/reports`
 

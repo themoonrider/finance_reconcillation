@@ -1,0 +1,6 @@
+reconcillation/reports/
+README.md
+__pycache__
+*.db
+.git
+.gitignore
