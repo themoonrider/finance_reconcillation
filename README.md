@@ -1,4 +1,6 @@
 # Reconcillation reports with YAML config 
+Simple docker image that generates a fake finance db that includes transactions from vendors and clients; and create reconcillation reports based on user-defined config file. 
+# Steps:
 1. Users define report parameters in the config file
 2. Provide MODULE_NAME as the directory name that holds stage_logic and config file 
 (`reconcillation`) and FILENAME of the config file in the main script `reconcillation_tl.py`
